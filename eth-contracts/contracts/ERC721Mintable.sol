@@ -1,17 +1,13 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.5.2;
 
 import 'openzeppelin-solidity/contracts/utils/Address.sol';
 import 'openzeppelin-solidity/contracts/drafts/Counters.sol';
 import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
+import 'openzeppelin-solidity/contracts/lifecycle/Pausable.sol';
 import 'openzeppelin-solidity/contracts/token/ERC721/IERC721Receiver.sol';
 import "./Oraclize.sol";
 
 contract Ownable {
-    string private constant ERROR_IS_OWNER_OF_TOKEN = "ERROR_IS_OWNER_OF_TOKEN";
-    string private constant ERROR_IS_NOT_APPROVED = "ERROR_IS_NOT_APPROVED";
-    string private constant ERROR_TOKEN_DOES_NOT_EXISTS = "ERROR_TOKEN_DOES_NOT_EXISTS";
-
-
     address private _owner;
 
     event TransferOwnership(address indexed oldOwner, address indexed newOwner);
@@ -76,7 +72,7 @@ contract ERC165 is Ownable {
         _;
     }
 
-    modifier paused() {
+    modifier contractIsPaused() {
         require(_paused == true, "Contract is not paused");
         _;
     }
@@ -110,6 +106,9 @@ contract ERC165 is Ownable {
 }
 
 contract ERC721 is Pausable, ERC165 {
+    string private constant ERROR_IS_OWNER_OF_TOKEN = "ERROR_IS_OWNER_OF_TOKEN";
+    string private constant ERROR_IS_NOT_APPROVED = "ERROR_IS_NOT_APPROVED";
+    string private constant ERROR_TOKEN_DOES_NOT_EXISTS = "ERROR_TOKEN_DOES_NOT_EXISTS";
 
     event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
 
@@ -161,11 +160,11 @@ contract ERC721 is Pausable, ERC165 {
     }
 
 //    @dev Approves another address to transfer the given token ID
-    function approve(address to, uint256 tokenId) public {
+    function approve(address to, uint256 tokenId) public{
         // TODO require the given address to not be the owner of the tokenId
-        require(ownerOf[tokenId] != to, ERROR_IS_OWNER_OF_TOKEN);
+        require(ownerOf(tokenId) != to, ERROR_IS_OWNER_OF_TOKEN);
         // TODO require the msg sender to be the owner of the contract or isApprovedForAll() to be true
-        require(onlyOwnerOf(tokenId) || isApprovedForAll(msg.sender,to), ERROR_IS_NOT_APPROVED);
+        require(ownerOf(tokenId) == msg.sender || isApprovedForAll(msg.sender,to), ERROR_IS_NOT_APPROVED);
         // TODO add 'to' address to token approvals
         _tokenApprovals[tokenId] = to;
         // TODO emit Approval Event
@@ -491,15 +490,15 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
     }
 
     // TODO: create external getter functions for name, symbol, and baseTokenURI
-    function name() public view returns (string) {
+    function name() public view returns (string memory) {
         return _name;
     }
 
-    function symbol() public view returns (string) {
+    function symbol() public view returns (string memory) {
         return _symbol;
     }
 
-    function baseTokenURI() public view returns (string) {
+    function baseTokenURI() public view returns (string memory) {
         return _baseTokenURI;
     }
 
@@ -531,8 +530,10 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 //      -returns a true boolean upon completion of the function
 //      -calls the superclass mint and setTokenURI functions
 contract SimbaToken is ERC721Metadata{
-    constructor () public {
-        _baseTokenURI = "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/";
+    constructor ()
+    ERC721Metadata("Simba", "sma", "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/")
+    public {
+
     }
 
     function mint(address to, uint256 tokenId) public onlyOwner returns (bool){
