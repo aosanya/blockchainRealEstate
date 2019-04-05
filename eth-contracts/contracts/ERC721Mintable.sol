@@ -9,6 +9,7 @@ import "./Oraclize.sol";
 contract Ownable {
     string private constant ERROR_IS_OWNER_OF_TOKEN = "ERROR_IS_OWNER_OF_TOKEN";
     string private constant ERROR_IS_NOT_APPROVED = "ERROR_IS_NOT_APPROVED";
+    string private constant ERROR_TOKEN_DOES_NOT_EXISTS = "ERROR_TOKEN_DOES_NOT_EXISTS";
 
 
     address private _owner;
@@ -81,14 +82,14 @@ contract ERC165 is Ownable {
     }
 
     function isPaused(bool paused) public onlyOwner {
-        require(paused != _paused, "THERE_IS_NO_CHANGE_TO_PAUSED_VALUE")
+        require(paused != _paused, "THERE_IS_NO_CHANGE_TO_PAUSED_VALUE");
         _paused = paused;
         if (_paused == true){
-            emit Paused(msg.sender)
+            emit Paused(msg.sender);
         }
 
         if (_paused == false){
-            emit Unpaused(msg.sender)
+            emit Unpaused(msg.sender);
         }
     }
 
@@ -151,7 +152,7 @@ contract ERC721 is Pausable, ERC165 {
     }
 
     modifier onlyOwnerOf(uint256 tokenId) {
-        require(ownerOf(uint256 tokenId) == msg.sender, "Is not Owner Token");
+        require(ownerOf(tokenId) == msg.sender, "Is not Owner Token");
         _;
     }
 
@@ -164,7 +165,7 @@ contract ERC721 is Pausable, ERC165 {
         // TODO require the given address to not be the owner of the tokenId
         require(ownerOf[tokenId] != to, ERROR_IS_OWNER_OF_TOKEN);
         // TODO require the msg sender to be the owner of the contract or isApprovedForAll() to be true
-        / require(onlyOwnerOf(tokenId) || isApprovedForAll(msg.sender,to), ERROR_IS_NOT_APPROVED);
+        require(onlyOwnerOf(tokenId) || isApprovedForAll(msg.sender,to), ERROR_IS_NOT_APPROVED);
         // TODO add 'to' address to token approvals
         _tokenApprovals[tokenId] = to;
         // TODO emit Approval Event
@@ -173,6 +174,8 @@ contract ERC721 is Pausable, ERC165 {
 
     function getApproved(uint256 tokenId) public view returns (address) {
         // TODO return token approval if it exists
+        require(_exists(tokenId));
+        return  _tokenApprovals[tokenId];
     }
 
     /**
@@ -463,8 +466,12 @@ contract ERC721Enumerable is ERC165, ERC721 {
 contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 
     // TODO: Create private vars for token _name, _symbol, and _baseTokenURI (string)
+    string private _name;
+    string private _symbol;
+    string private _baseTokenURI;
 
     // TODO: create private mapping of tokenId's to token uri's called '_tokenURIs'
+    mapping(uint256 => string) private _tokenURIs;
 
     bytes4 private constant _INTERFACE_ID_ERC721_METADATA = 0x5b5e139f;
     /*
@@ -477,11 +484,24 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 
     constructor (string memory name, string memory symbol, string memory baseTokenURI) public {
         // TODO: set instance var values
-
+        _name = name;
+        _symbol = symbol;
+        _baseTokenURI = baseTokenURI;
         _registerInterface(_INTERFACE_ID_ERC721_METADATA);
     }
 
     // TODO: create external getter functions for name, symbol, and baseTokenURI
+    function name() public view returns (string) {
+        return _name;
+    }
+
+    function symbol() public view returns (string) {
+        return _symbol;
+    }
+
+    function baseTokenURI() public view returns (string) {
+        return _baseTokenURI;
+    }
 
     function tokenURI(uint256 tokenId) external view returns (string memory) {
         require(_exists(tokenId));
@@ -495,6 +515,10 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
     // TIP #2: you can also use uint2str() to convert a uint to a string
         // see https://github.com/oraclize/ethereum-api/blob/master/oraclizeAPI_0.5.sol for strConcat()
     // require the token exists before setting
+     function setTokenURI(uint256 tokenId) internal {
+        require(_exists(tokenId));
+        _tokenURIs[tokenId] = strConcat(_baseTokenURI, uint2str(tokenId));
+    }
 
 }
 
@@ -506,6 +530,16 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 //      -takes in a 'to' address, tokenId, and tokenURI as parameters
 //      -returns a true boolean upon completion of the function
 //      -calls the superclass mint and setTokenURI functions
+contract SimbaToken is ERC721Metadata{
+    constructor () public {
+        _baseTokenURI = "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/";
+    }
 
+    function mint(address to, uint256 tokenId) public onlyOwner returns (bool){
+        super._mint(to, tokenId);
+        super.setTokenURI(tokenId);
+        return true;
+    }
+}
 
 
