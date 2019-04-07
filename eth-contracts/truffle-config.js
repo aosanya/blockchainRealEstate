@@ -18,12 +18,15 @@
  *
  */
 
-// const HDWalletProvider = require('truffle-hdwallet-provider');
+const HDWalletProvider = require('truffle-hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
 //
 const fs = require('fs');
-//const mnemonic = fs.readFileSync(".secret").toString().trim();
-const mnemonic = "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
+const mnemonic = fs.readFileSync(".secret").toString().trim();
+//const mnemonic = "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
+
+var Web3 = require('web3'); // Set variable to the web3 module
+var web3 = new Web3(Web3.givenProvider || "ws://localhost:9545");
 
 module.exports = {
   /**
