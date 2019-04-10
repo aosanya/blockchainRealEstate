@@ -2,7 +2,7 @@ pragma solidity ^0.5.2;
 import "./ERC721Mintable.sol";
 import "./verifier.sol";
 
-// TODO define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
+// DO define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
 
 // DO define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
 contract SolnSquareVerifier is SimbaToken {

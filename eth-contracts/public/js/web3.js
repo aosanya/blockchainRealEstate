@@ -17,7 +17,6 @@ function loadAccounts(){
       if (error) console.log(error)
         accounts = result
         web3.eth.defaultAccount = accounts[0];
-        console.log(accounts)
     })
   }
 
