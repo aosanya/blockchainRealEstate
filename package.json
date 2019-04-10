@@ -18,6 +18,6 @@
     "solc": "^0.5.7",
     "solc-js": "^0.5.2",
     "truffle-hdwallet-provider": "^1.0.6",
-    "web3": "^1.0.0-beta.52"
+    "web3": "github:ethereum/web3.js"
   }
 }

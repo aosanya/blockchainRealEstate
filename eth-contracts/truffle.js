@@ -22,12 +22,7 @@ const HDWalletProvider = require('truffle-hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
 //
 const fs = require('fs');
-const mnemonic = fs.readFileSync(".secret").toString().trim();
-const mnemonic2 = fs.readFileSync(".secret2").toString().trim();
-//const mnemonic = "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
-
-var Web3 = require('web3'); // Set variable to the web3 module
-var web3 = new Web3(Web3.givenProvider || "ws://localhost:9545");
+const mnemonic = fs.readFileSync(".secret2").toString().trim();
 
 module.exports = {
   /**
@@ -53,11 +48,6 @@ module.exports = {
     //   network_id: "*",       // Any network (default: none)
     //  },
 
-     localRinkerby: {
-      host: "127.0.0.1",     // Localhost (default: none)
-      port: 8546,            // Standard Ethereum port (default: none)
-      network_id: "*",       // Any network (default: none)
-     },
     // Another network with more advanced options...
     // advanced: {
       // port: 8777,             // Custom port
@@ -70,11 +60,11 @@ module.exports = {
 
     //Useful for deploying to a public network.
     //NB: It's important to wrap the provider as a function.
-    // rinkeby: {
-    //   provider: () => new HDWalletProvider(mnemonic2, `https://rinkeby.infura.io/v3/0be5128eea744d84b4f47d13a3de1f7f`),
-    //   network_id: '4'
-    //   //,gas: 6000000
-    // },
+    rinkeby: {
+      provider: () => new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/0be5128eea744d84b4f47d13a3de1f7f`),
+      network_id: '4'
+      //,gas: 6000000
+    },
 
     // Useful for private networks
     // private: {

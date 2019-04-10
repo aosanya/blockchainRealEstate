@@ -82,6 +82,7 @@ contract('TestERC721Mintable', accounts => {
                 assert.isTrue(error.toString().includes("revert Is not Owner"), "Unexpected throw recieved")
                 return
             }
+
         })
 
         it('should return contract owner', async function () {
