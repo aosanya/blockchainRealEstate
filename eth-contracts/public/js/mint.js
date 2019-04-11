@@ -1,9 +1,11 @@
+let account_1 = "0xb60ab9d5372C64f5f9056BA95Bb8AB93e036b4DD";
+let account_2 = "0xb4C7F8e169E134A984B9274b791fAda1C27d5691";
+let account_3 = "0xa9566E4d657C44f46bf141F52d4AB882c356025e";
+let account_4 = web3.eth.accounts[3];
+let account_5 = web3.eth.accounts[4];
+
 function mint(){
-    let account_1 = "0xb60ab9d5372C64f5f9056BA95Bb8AB93e036b4DD";
-    let account_2 = "0xb4C7F8e169E134A984B9274b791fAda1C27d5691";
-    let account_3 = web3.eth.accounts[2];
-    let account_4 = web3.eth.accounts[3];
-    let account_5 = web3.eth.accounts[4];
+
 
    var tx1 = solnSquareVerifier.proveAndMint(
     account_2,
@@ -185,4 +187,14 @@ function mint(){
         console.error(error);
     })
 
+    }
+
+    function transfer(){
+        console.log(account_3)
+        var tx10 =  solnSquareVerifier.transferFrom(account_2, account_3, 5, {from: account_2}, function(error, result){
+        if(!error)
+            console.log(JSON.stringify(result));
+        else
+            console.error(error);
+        })
     }

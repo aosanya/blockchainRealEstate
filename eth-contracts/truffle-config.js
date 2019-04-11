@@ -47,17 +47,12 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
-    //  development: {
-    //   host: "127.0.0.1",     // Localhost (default: none)
-    //   port: 8545,            // Standard Ethereum port (default: none)
-    //   network_id: "*",       // Any network (default: none)
-    //  },
-
-     localRinkerby: {
+     development: {
       host: "127.0.0.1",     // Localhost (default: none)
-      port: 8546,            // Standard Ethereum port (default: none)
+      port: 8545,            // Standard Ethereum port (default: none)
       network_id: "*",       // Any network (default: none)
      },
+
     // Another network with more advanced options...
     // advanced: {
       // port: 8777,             // Custom port
@@ -68,13 +63,13 @@ module.exports = {
       // websockets: true        // Enable EventEmitter interface for web3 (default: false)
     // },
 
-    //Useful for deploying to a public network.
-    //NB: It's important to wrap the provider as a function.
-    // rinkeby: {
-    //   provider: () => new HDWalletProvider(mnemonic2, `https://rinkeby.infura.io/v3/0be5128eea744d84b4f47d13a3de1f7f`),
-    //   network_id: '4'
-    //   //,gas: 6000000
-    // },
+    // Useful for deploying to a public network.
+    // NB: It's important to wrap the provider as a function.
+    rinkeby: {
+      provider: () => new HDWalletProvider(mnemonic2, `https://rinkeby.infura.io/v3/0be5128eea744d84b4f47d13a3de1f7f`),
+      network_id: '4'
+      //,gas: 6000000
+    },
 
     // Useful for private networks
     // private: {
