@@ -5,7 +5,7 @@ import "./verifier.sol";
 // DO define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
 
 // DO define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
-contract SolnSquareVerifier is SimbaToken {
+contract SolnSquareVerifier is NdovuToken {
     Verifier verifier;
 
     // DO define a solutions struct that can hold an index & an address
@@ -21,11 +21,6 @@ contract SolnSquareVerifier is SimbaToken {
     // DO  Create an event to emit when a solution is added
     event AddedSolution(uint Index);
 
-    // DO Create a function to add the solutions to the array and emit the event
-    function AddSolution(uint index) internal{
-       //solutions.push(Solution(index, msg.sender));
-    }
-
      constructor
     ()
     public
@@ -36,7 +31,7 @@ contract SolnSquareVerifier is SimbaToken {
     // DO Create a function to mint new NFT only after the solution has been verified
     //  - make sure the solution is unique (has not been used before)
     //  - make sure you handle metadata as well as tokenSuplly
-    function proveAndMint(
+    function mint(
             address to,
             uint256 tokenId,
             uint[2] memory a,
@@ -79,7 +74,8 @@ contract SolnSquareVerifier is SimbaToken {
         solution_.index = input[0];
         solution_.solver = msg.sender;
         solution_.exists = true;
-        super._mint(to, tokenId);
+        super.mint(to, tokenId);
+        emit AddedSolution(input[0]);
         return true;
     }
 
@@ -96,6 +92,7 @@ contract SolnSquareVerifier is SimbaToken {
         uint[2] memory input
     )
     internal
+    pure
     returns(bytes32)
     {
         bytes32 aHash = keccak256(abi.encodePacked(a[0], a[1]));
@@ -109,7 +106,7 @@ contract SolnSquareVerifier is SimbaToken {
         bytes32 inputHash = keccak256(abi.encodePacked(input[0], input[1]));
 
         return keccak256(abi.encodePacked(
-            aHash, a_pHash, bHash, cHash, c_pHash, hHash, kHash, inputHash
+            aHash, a_pHash, bHash, b_pHash, cHash, c_pHash, hHash, kHash, inputHash
         ));
     }
 }

@@ -5,11 +5,10 @@ let account_4 = web3.eth.accounts[3];
 let account_5 = web3.eth.accounts[4];
 
 function mint(){
-
-
-   var tx1 = solnSquareVerifier.proveAndMint(
+    console.log(solnSquareVerifier)
+   var tx1 = solnSquareVerifier.mint(
     account_2,
-    3,
+    1,
     ["0x203cd13fb85da88b9043be613b0769a52e5762d65f5fc824c88fc284a129de82", "0x2228088f1355720784a965c9958f77ad99a680449253cd59eb238fbecbda4681"],
     ["0x1c76b43005aa5f2e2010b64961d34340847da293eff595e391b1fb7af96df5e", "0x17193ab8a70cc7f8d18474130ef4c70899e02888c591a5437e1772bc858ecacd"],
     [["0x4bf30d8605d2925c75f0b805c7851e28eda0465881998a9f48e6e65fb694d02", "0x19bede0608c65b658b4cda78a5be619c77c2d34126bc58b3c9a32b23c772ce26"], ["0x3c4c8e2d528a177a5254e8d75d674c48c49d363de8cc6937da775a8cf03df57", "0x223db98f53a7d7bf8afcd4e0538014931cf59d83cc80302ccb3adaddbed61cf1"]],
@@ -25,7 +24,7 @@ function mint(){
         console.error(error);
     })
 
-    var tx2 = solnSquareVerifier.proveAndMint(
+    var tx2 = solnSquareVerifier.mint(
     account_2,
     2,
     ["0x1dc04c3b4eb2587d9d8ad6c60105c49b1c74610c8c87c941e248e6871dfe60b0", "0x13bacb8ce97b8a432bab9b7da170096ea9249d5f0a9e00f070fba5e91d65e290"],
@@ -43,25 +42,25 @@ function mint(){
             console.error(error);
         })
 
-    // var tx3 = solnSquareVerifier.proveAndMint(
-    // account_2,
-    // 1,
-    // ["0x2afb699d0932bf1e5847ffc61bab41a850dba2b677dea4c7592f138a72b63e51", "0x4e4950aeb036b5a411deafd3780fa0c99d207f86738aa5cfc9a092eb506ca9f"],
-    // ["0x199ed11257b8ce53bf9b4e532454739248169b19bd1d4fe97916766d11e32b97", "0x24bbb9dbec3b097cd5674ee91bebe5a2a74f90935334cc072d2e3c2684186ac9"],
-    // [["0x2ea094b6ebc10f5b8d147fc56fbbc55e79b1c318777c08476f82b196d0cb6cb0", "0x28fb32244281051384b939ef853b011b2ee6b6327654b195c1470d14ac35f8ca"], ["0x1ba40b23d5f85ff6f6ee1aecfa5369317ed772e8c1957eaf4fb4160f34814966", "0x30862d90292e68fef82df9450f68a5415a8c0e698d3b9e0bace5a839cabcf03"]],
-    // ["0x13b640b32806c0e6cc6004234479126da546eee932efaa05dda272e14ff2bd5f", "0x1af86936ae79949dc8b1dc02803ca335d4e187706b0375c30c669b4367a43821"],
-    // ["0x29e8d45708cb2512185d2817f1c9639055f9aeecd953c30d392394dc2ca8ae87", "0x1f5e226d99d98459a5d7b300a5222e86e7f123b0ac459c5bc3339138b5fe3967"],
-    // ["0xce54ff0cc77ed89037c0c995f8b0781ce1a6db0dce5ce7a7cfae76eeceaacd5", "0x19873bbceb71065e1d3f8f792f657f86172688d371b0ed502b593f3953777209"],
-    // ["0xb28f0322bc73ad40801f1f31cac9b151aaa6cf5bf5cb22c05e5fd0ab2d33a4e", "0x22705846c190e4cfdcd4d50d71fb6cea6d852b6d85779e3a8903621fcc49692a"],
-    // ["0x5b63428a5239722f33c6534c015e43296de011ebbe29f2185c345f63db7f3ea", "0x213fd40e65fc24cd6bc1af61afe08fc351d692035581314616b1b098a7178f1d"]
-    // [9,1], {from : account_1}, function(error, result){
-    //     if(!error)
-    //         console.log(JSON.stringify(result));
-    //     else
-    //         console.error(error);
-    //     })
+    var tx3 = solnSquareVerifier.mint(
+    account_2,
+    3,
+    ["0x2afb699d0932bf1e5847ffc61bab41a850dba2b677dea4c7592f138a72b63e51", "0x4e4950aeb036b5a411deafd3780fa0c99d207f86738aa5cfc9a092eb506ca9f"],
+    ["0x199ed11257b8ce53bf9b4e532454739248169b19bd1d4fe97916766d11e32b97", "0x24bbb9dbec3b097cd5674ee91bebe5a2a74f90935334cc072d2e3c2684186ac9"],
+    [["0x2ea094b6ebc10f5b8d147fc56fbbc55e79b1c318777c08476f82b196d0cb6cb0", "0x28fb32244281051384b939ef853b011b2ee6b6327654b195c1470d14ac35f8ca"], ["0x1ba40b23d5f85ff6f6ee1aecfa5369317ed772e8c1957eaf4fb4160f34814966", "0x30862d90292e68fef82df9450f68a5415a8c0e698d3b9e0bace5a839cabcf03"]],
+    ["0x13b640b32806c0e6cc6004234479126da546eee932efaa05dda272e14ff2bd5f", "0x1af86936ae79949dc8b1dc02803ca335d4e187706b0375c30c669b4367a43821"],
+    ["0x29e8d45708cb2512185d2817f1c9639055f9aeecd953c30d392394dc2ca8ae87", "0x1f5e226d99d98459a5d7b300a5222e86e7f123b0ac459c5bc3339138b5fe3967"],
+    ["0xce54ff0cc77ed89037c0c995f8b0781ce1a6db0dce5ce7a7cfae76eeceaacd5", "0x19873bbceb71065e1d3f8f792f657f86172688d371b0ed502b593f3953777209"],
+    ["0xb28f0322bc73ad40801f1f31cac9b151aaa6cf5bf5cb22c05e5fd0ab2d33a4e", "0x22705846c190e4cfdcd4d50d71fb6cea6d852b6d85779e3a8903621fcc49692a"],
+    ["0x5b63428a5239722f33c6534c015e43296de011ebbe29f2185c345f63db7f3ea", "0x213fd40e65fc24cd6bc1af61afe08fc351d692035581314616b1b098a7178f1d"],
+    [9,1], {from : account_1}, function(error, result){
+        if(!error)
+            console.log(JSON.stringify(result));
+        else
+            console.error(error);
+        })
 
-    var tx4 = solnSquareVerifier.proveAndMint(
+    var tx4 = solnSquareVerifier.mint(
     account_2,
     4,
     ["0x5e312fcbb6429a6f0c6006ecd736ca22e8ea062ae1899c945479c4fcecc1a8c", "0x1a06a5e9b92636b252808424a4941fc401fc5fe44941c509aceb30cf34120749"],
@@ -79,7 +78,7 @@ function mint(){
         console.error(error);
     })
 
-    var tx5 = solnSquareVerifier.proveAndMint(
+    var tx5 = solnSquareVerifier.mint(
     account_2,
     5,
     ["0x12e24874854e4c2b4f44a7ba8df793c817d4d1fa2d189a8598b0925458c0861b", "0x6b8f0ede90d3088a1f89b7c2ab9670aa16b24b95662f9560682605079eefd20"],
@@ -97,7 +96,7 @@ function mint(){
         console.error(error);
     })
 
-    var tx6 = solnSquareVerifier.proveAndMint(
+    var tx6 = solnSquareVerifier.mint(
     account_2,
     6,
     ["0x2fe3c642b88c5ee00f25d0ed671264a3ca4b4a7f8b377dadcc9d976f00acd5b0", "0x2d76e81161282fff2146411aa25158d290e9ded4afcda05b65129883ab1fc07d"],
@@ -115,7 +114,7 @@ function mint(){
         console.error(error);
     })
 
-    var tx7 = solnSquareVerifier.proveAndMint(
+    var tx7 = solnSquareVerifier.mint(
     account_2,
     7,
     ["0x88f3a4c80fe50a12124134c2ea8073c665af1f78f2ab99ebf2ab9a30922a129", "0x85e6b29deb472642b46c85b7ca34bb2ed9103b17480589ba98437cf496b82c5"],
@@ -133,7 +132,7 @@ function mint(){
         console.error(error);
     })
 
-    var tx8 = solnSquareVerifier.proveAndMint(
+    var tx8 = solnSquareVerifier.mint(
     account_2,
     8,
     ["0xaef9169acb03324bb4a67fac82574691b3f3c6ba1974adf852c78f9879f8da8", "0xe100d83d17289c434f825cab23ba2570bd1d8583937d2ab76c421f666a246d4"],
@@ -151,7 +150,7 @@ function mint(){
         console.error(error);
     })
 
-    var tx9 = solnSquareVerifier.proveAndMint(
+    var tx9 = solnSquareVerifier.mint(
     account_2,
     9,
     ["0x21056d2c26474aa626859309c45d4e03b5ab0effad791a4e6ef72c2948031c39", "0x19a694b0ab79541e3ac9cacf907ad16e92933fb1e1dcd7626a952a8a9df50c7c"],
@@ -169,7 +168,7 @@ function mint(){
         console.error(error);
     })
 
-    var tx10 = solnSquareVerifier.proveAndMint(
+    var tx10 = solnSquareVerifier.mint(
     account_2,
     10,
     ["0x2a53512e8e07bc863820292728529e60b2f024dbd336d0b826d40029fd32b1f1", "0xc94b205b1768b8932a0e93c683b3413e98da03fa604f242490ac84e4d0d73de"],

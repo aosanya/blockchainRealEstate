@@ -1,8 +1,3 @@
-//
-
-//
-
-
 var SolnSquareVerifier = artifacts.require('SolnSquareVerifier');
 
 contract('SolnSquareVerifier', accounts => {
@@ -15,7 +10,7 @@ contract('SolnSquareVerifier', accounts => {
         })
 
         it('Test if an ERC721 token can be minted for contract - SolnSquareVerifier', async function () {
-            await this.contract.proveAndMint(
+            await this.contract.mint(
                 account_2,
                 1,
                 ["0x2afb699d0932bf1e5847ffc61bab41a850dba2b677dea4c7592f138a72b63e51", "0x4e4950aeb036b5a411deafd3780fa0c99d207f86738aa5cfc9a092eb506ca9f"],

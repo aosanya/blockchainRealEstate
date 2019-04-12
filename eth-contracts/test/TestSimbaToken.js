@@ -1,4 +1,4 @@
-var SimbaToken = artifacts.require('SimbaToken');
+var NdovuToken = artifacts.require('NdovuToken');
 
 contract('TestERC721Mintable', accounts => {
 
@@ -17,21 +17,24 @@ contract('TestERC721Mintable', accounts => {
 
     describe('match erc721 spec', function () {
         beforeEach(async function () {
-            this.contract = await SimbaToken.new({from: account_1});
+            this.contract = await NdovuToken.new({from: account_1});
             // Do : mint multiple tokens
             await this.contract.mint(account_2, 1, {from: account_1})
             await this.contract.mint(account_3, 2, {from: account_1})
+
             await this.contract.mint(account_4, 3, {from: account_1})
             await this.contract.mint(account_5, 4, {from: account_1})
             await this.contract.mint(account_6, 5, {from: account_1})
             await this.contract.mint(account_6, 6, {from: account_1})
+
+
         })
 
         it('should have token details', async function () {
             let name = await this.contract.name();
-            assert.equal(name, "Simba", 'Error: Token Name is Wrong')
+            assert.equal(name, "Ndovu", 'Error: Token Name is Wrong')
             let symbol = await this.contract.symbol();
-            assert.equal(symbol, "sma", 'Error: Symbol is Wrong')
+            assert.equal(symbol, "ndo", 'Error: Symbol is Wrong')
             let baseTokenURI = await this.contract.baseTokenURI();
             assert.equal(baseTokenURI, "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/", 'Error: Token baseTokenURI is Wrong')
         })
@@ -54,8 +57,39 @@ contract('TestERC721Mintable', accounts => {
             let tokenURI1 = await this.contract.tokenURI(1, {from: account_1})
             assert.equal(tokenURI1, "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/1", 'Error: Wrong Token uri')
 
-            let tokenURI2 = await this.contract.tokenURI(1, {from: account_1})
-            assert.equal(tokenURI2, "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/1", 'Error: Wrong Token uri')
+            let tokenURI2 = await this.contract.tokenURI(2, {from: account_1})
+            assert.equal(tokenURI2, "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/2", 'Error: Wrong Token uri')
+        })
+
+        it('should transfer token from approved to another', async function () {
+            await this.contract.mint(account_2, 7, {from: account_1})
+
+            var balanceOf5 = await this.contract.balanceOf(account_5, {from: account_1})
+            assert.equal(balanceOf5, 1, 'Error: Wrong start balance for account 5')
+
+            try{
+                await this.contract.transferFrom(account_2, account_5, 7, {from: account_4})
+            }
+            catch (error){
+                assert.isTrue(error.toString().includes("revert"), "Unexpected throw recieved for transfer")
+            }
+
+            await this.contract.approve(account_4, 7, {from: account_2})
+
+            let approved = await this.contract.getApproved(7, {from: account_2})
+            assert.equal(approved, account_4, 'Error: Account 4 is not approved')
+
+            try{
+                await this.contract.transferFrom(account_2, account_5, 7, {from: account_4})
+            }
+            catch (error){
+                console.log(error.toString())
+                assert.error("Could not transfer token")
+                return
+            }
+
+            balanceOf5 = await this.contract.balanceOf(account_5, {from: account_1})
+            assert.equal(balanceOf5, 2, 'Error: Wrong end balance for account 5')
         })
 
         it('should transfer token from one owner to another', async function () {
@@ -70,7 +104,7 @@ contract('TestERC721Mintable', accounts => {
 
     describe('have ownership properties', function () {
         beforeEach(async function () {
-            this.contract = await SimbaToken.new({from: account_1});
+            this.contract = await NdovuToken.new({from: account_1});
         })
 
         it('should fail when minting when address is not contract owner', async function () {

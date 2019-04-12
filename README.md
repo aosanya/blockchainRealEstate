@@ -21,8 +21,8 @@ To run tests run the following commands
 1) Deploy SolnSquareVerifier contract to Rinkeby network
 2) Mint 10 tokens
 ##Contract
-Address : 0x8b26d4c864325ae0b315d311b6014a0aa76752f9
-Etherscan Address : https://rinkeby.etherscan.io/address/0x8b26d4c864325ae0b315d311b6014a0aa76752f9
+Address : 0x6D627D5e8dF24A57C444835E462bfF64fbF82246
+Etherscan Address : https://rinkeby.etherscan.io/address/0x6D627D5e8dF24A57C444835E462bfF64fbF82246
 ABI : ~eth-contracts/public/js/abi.js
 
 #Opensea
@@ -31,9 +31,9 @@ ABI : ~eth-contracts/public/js/abi.js
 3) List 5 of your tokens on the marketplace
 4) Purchase those 5 tokens using a different address
 ##Marketplace
-Storefront : https://rinkeby.opensea.io/category/simba
+Storefront : https://rinkeby.opensea.io/category/ndovu
 To participate in the Opensea marketplace, follow the link below providing the  Token Id
-https://rinkeby.opensea.io/assets/0x8b26d4c864325ae0b315d311b6014a0aa76752f9/<Token ID>
+https://rinkeby.opensea.io/assets/0x6D627D5e8dF24A57C444835E462bfF64fbF82246/<Token ID>
 
 # Project Resources
 * [Remix - Solidity IDE](https://remix.ethereum.org/)

@@ -24,5 +24,5 @@ web3.eth.defaultAccount = web3.eth.accounts[0];
 
 // The interface definition for your smart contract (the ABI)
 var SolnSquareVerifier = web3.eth.contract(abi)
-var solnSquareVerifier = SolnSquareVerifier.at('0x8B26D4C864325aE0b315d311b6014A0AA76752f9');
+var solnSquareVerifier = SolnSquareVerifier.at('0x6D627D5e8dF24A57C444835E462bfF64fbF82246');
 console.log(solnSquareVerifier)

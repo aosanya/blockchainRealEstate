@@ -16,8 +16,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x01ffc9a7"
+    "type": "function"
   },
   {
     "constant": true,
@@ -31,8 +30,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x06fdde03"
+    "type": "function"
   },
   {
     "constant": true,
@@ -51,8 +49,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x081812fc"
+    "type": "function"
   },
   {
     "constant": false,
@@ -70,8 +67,7 @@ let abi = [
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x095ea7b3"
+    "type": "function"
   },
   {
     "constant": true,
@@ -85,8 +81,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x18160ddd"
+    "type": "function"
   },
   {
     "constant": false,
@@ -100,8 +95,7 @@ let abi = [
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x20f1dbbc"
+    "type": "function"
   },
   {
     "constant": false,
@@ -123,8 +117,7 @@ let abi = [
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x23b872dd"
+    "type": "function"
   },
   {
     "constant": false,
@@ -142,8 +135,7 @@ let abi = [
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x27dc297e"
+    "type": "function"
   },
   {
     "constant": true,
@@ -166,8 +158,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x2f745c59"
+    "type": "function"
   },
   {
     "constant": false,
@@ -189,8 +180,7 @@ let abi = [
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x38bbfa50"
+    "type": "function"
   },
   {
     "constant": false,
@@ -199,32 +189,7 @@ let abi = [
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x3f4ba83a"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "to",
-        "type": "address"
-      },
-      {
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "mint",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x40c10f19"
+    "type": "function"
   },
   {
     "constant": false,
@@ -246,8 +211,7 @@ let abi = [
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x42842e0e"
+    "type": "function"
   },
   {
     "constant": true,
@@ -266,8 +230,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x46fbf68e"
+    "type": "function"
   },
   {
     "constant": true,
@@ -286,8 +249,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x4f6ccce7"
+    "type": "function"
   },
   {
     "constant": true,
@@ -301,8 +263,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x5c975abb"
+    "type": "function"
   },
   {
     "constant": true,
@@ -321,8 +282,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x6352211e"
+    "type": "function"
   },
   {
     "constant": false,
@@ -331,8 +291,7 @@ let abi = [
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x6ef8d66d"
+    "type": "function"
   },
   {
     "constant": true,
@@ -351,8 +310,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x70a08231"
+    "type": "function"
   },
   {
     "constant": false,
@@ -366,8 +324,7 @@ let abi = [
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x82dc1ec4"
+    "type": "function"
   },
   {
     "constant": false,
@@ -376,8 +333,7 @@ let abi = [
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x8456cb59"
+    "type": "function"
   },
   {
     "constant": true,
@@ -391,8 +347,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x8da5cb5b"
+    "type": "function"
   },
   {
     "constant": true,
@@ -406,8 +361,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x8f32d59b"
+    "type": "function"
   },
   {
     "constant": true,
@@ -421,8 +375,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0x95d89b41"
+    "type": "function"
   },
   {
     "constant": false,
@@ -440,8 +393,7 @@ let abi = [
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xa22cb465"
+    "type": "function"
   },
   {
     "constant": false,
@@ -467,8 +419,7 @@ let abi = [
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xb88d4fde"
+    "type": "function"
   },
   {
     "constant": true,
@@ -487,8 +438,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0xc87b56dd"
+    "type": "function"
   },
   {
     "constant": true,
@@ -502,8 +452,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0xd547cfb7"
+    "type": "function"
   },
   {
     "constant": true,
@@ -526,8 +475,7 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "view",
-    "type": "function",
-    "signature": "0xe985e9c5"
+    "type": "function"
   },
   {
     "constant": false,
@@ -541,15 +489,13 @@ let abi = [
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xf2fde38b"
+    "type": "function"
   },
   {
     "inputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "constructor",
-    "signature": "constructor"
+    "type": "constructor"
   },
   {
     "anonymous": false,
@@ -561,8 +507,7 @@ let abi = [
       }
     ],
     "name": "AddedSolution",
-    "type": "event",
-    "signature": "0xaf0bf59c37acc36ea934ee3707ed2184e831c3425ce9243fa026f30a23924246"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -584,8 +529,7 @@ let abi = [
       }
     ],
     "name": "Transfer",
-    "type": "event",
-    "signature": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -607,8 +551,7 @@ let abi = [
       }
     ],
     "name": "Approval",
-    "type": "event",
-    "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -630,8 +573,7 @@ let abi = [
       }
     ],
     "name": "ApprovalForAll",
-    "type": "event",
-    "signature": "0x17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -643,8 +585,7 @@ let abi = [
       }
     ],
     "name": "Paused",
-    "type": "event",
-    "signature": "0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -656,8 +597,7 @@ let abi = [
       }
     ],
     "name": "Unpaused",
-    "type": "event",
-    "signature": "0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -674,8 +614,7 @@ let abi = [
       }
     ],
     "name": "TransferOwnership",
-    "type": "event",
-    "signature": "0x5c486528ec3e3f0ea91181cff8116f02bfa350e03b8b6f12e00765adbb5af85c"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -687,8 +626,7 @@ let abi = [
       }
     ],
     "name": "PauserAdded",
-    "type": "event",
-    "signature": "0x6719d08c1888103bea251a4ed56406bd0c3e69723c8a1686e017e7bbe159b6f8"
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -700,8 +638,7 @@ let abi = [
       }
     ],
     "name": "PauserRemoved",
-    "type": "event",
-    "signature": "0xcd265ebaf09df2871cc7bd4133404a235ba12eff2041bb89d9c714a2621c7c7e"
+    "type": "event"
   },
   {
     "constant": false,
@@ -751,7 +688,7 @@ let abi = [
         "type": "uint256[2]"
       }
     ],
-    "name": "proveAndMint",
+    "name": "mint",
     "outputs": [
       {
         "name": "",
@@ -760,7 +697,6 @@ let abi = [
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0x7999b537"
+    "type": "function"
   }
 ]

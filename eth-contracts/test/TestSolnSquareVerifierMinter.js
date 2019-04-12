@@ -11,7 +11,16 @@ contract('SolnSquareVerifier', accounts => {
 
     describe('Verify Transaction', function () {
         beforeEach(async function () {
-            this.contract = await SolnSquareVerifier.at("0x9Efd5fD0D0B5fd535aEc4E5e5161E562cbcB9849", {from: account_1});
+            this.contract = await SolnSquareVerifier.new({from: account_1});
+        })
+
+        it('should also have token details', async function () {
+            let name = await this.contract.name();
+            assert.equal(name, "Ndovu", 'Error: Token Name is Wrong')
+            let symbol = await this.contract.symbol();
+            assert.equal(symbol, "ndo", 'Error: Symbol is Wrong')
+            let baseTokenURI = await this.contract.baseTokenURI();
+            assert.equal(baseTokenURI, "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/", 'Error: Token baseTokenURI is Wrong')
         })
 
         it('Test if an ERC721 token can be minted for contract - SolnSquareVerifier', async function () {

@@ -5,6 +5,7 @@ import 'openzeppelin-solidity/contracts/drafts/Counters.sol';
 import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 import 'openzeppelin-solidity/contracts/lifecycle/Pausable.sol';
 import 'openzeppelin-solidity/contracts/token/ERC721/IERC721Receiver.sol';
+import "openzeppelin-solidity/contracts/token/ERC721/IERC721Metadata.sol";
 import "./Oraclize.sol";
 
 contract Ownable {
@@ -257,7 +258,7 @@ contract ERC721 is Pausable, ERC165 {
     // TIP: remember the functions to use for Counters. you can refresh yourself with the link above
     function _transferFrom(address from, address to, uint256 tokenId) internal {
         // DO: require from address is the owner of the given token
-        require(ownerOf(tokenId) == msg.sender, ERROR_IS_NOT_OWNER_OF_TOKEN);
+        require(ownerOf(tokenId) == from, ERROR_IS_NOT_OWNER_OF_TOKEN);
         // DO: require token is being transfered to valid address
         require(to != address(0));
         // DO: clear approval
@@ -522,7 +523,7 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
     // TIP #2: you can also use uint2str() to convert a uint to a string
         // see https://github.com/oraclize/ethereum-api/blob/master/oraclizeAPI_0.5.sol for strConcat()
     // require the token exists before setting
-     function setTokenURI(uint256 tokenId) internal {
+     function _setTokenURI(uint256 tokenId) internal {
         require(_exists(tokenId));
         _tokenURIs[tokenId] = strConcat(_baseTokenURI, uint2str(tokenId));
     }
@@ -537,16 +538,16 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 //      -takes in a 'to' address, tokenId, and tokenURI as parameters
 //      -returns a true boolean upon completion of the function
 //      -calls the superclass mint and setTokenURI functions
-contract SimbaToken is ERC721Metadata{
+contract NdovuToken is ERC721Metadata{
     constructor ()
-    ERC721Metadata("Simba", "sma", "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/")
+    ERC721Metadata("Ndovu", "ndo", "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/")
     public {
 
     }
 
     function mint(address to, uint256 tokenId) public onlyOwner returns (bool){
         super._mint(to, tokenId);
-        super.setTokenURI(tokenId);
+        super._setTokenURI(tokenId);
         return true;
     }
 }
