@@ -23,15 +23,16 @@ To run tests run the following commands
 ##Contract
 Address : 0x6D627D5e8dF24A57C444835E462bfF64fbF82246
 Etherscan Address : https://rinkeby.etherscan.io/address/0x6D627D5e8dF24A57C444835E462bfF64fbF82246
+Etherscan Ndovu V3 Token : https://rinkeby.etherscan.io/token/0x6D627D5e8dF24A57C444835E462bfF64fbF82246
 ABI : ~eth-contracts/public/js/abi.js
 
 #Opensea
 1) Generate OpenSea marketplace
 2) Test and Verify OpenSea with your SolnSquareVerifier tokens
-3) List 5 of your tokens on the marketplace
-4) Purchase those 5 tokens using a different address
+3) List 10 of tokens on the marketplace
+4) Sell and Purchase 5 tokens using a different address
 ##Marketplace
-Storefront : https://rinkeby.opensea.io/category/ndovu
+Storefront : https://rinkeby.opensea.io/category/ndovuV3
 To participate in the Opensea marketplace, follow the link below providing the  Token Id
 https://rinkeby.opensea.io/assets/0x6D627D5e8dF24A57C444835E462bfF64fbF82246/<Token ID>
 
